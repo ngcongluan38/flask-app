@@ -62,5 +62,5 @@ def download_file():
     return send_file(processed_path, as_attachment=True)
 
 if __name__ == '__main__':
-  port = 5000
-  app.run(debug=True, port=port) 
+    port = int(os.environ.get('PORT', 5000))
+    app.run(debug=True, port=port) 
