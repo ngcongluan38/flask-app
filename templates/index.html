@@ -3,25 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Processing App</title>
+    <title>Photo Handling App</title>
 </head>
 <body>
-    <h1>Image Processing App</h1>
+    <h1>Photo Handling App</h1>
 
-    <form method="POST" enctype="multipart/form-data" action="{{ url_for('upload_file') }}">
+    <form method="POST" action="/" enctype="multipart/form-data">
         <input type="file" name="file" accept=".jpg, .jpeg, .png" required>
         <button type="submit">Upload</button>
     </form>
 
     {% if original %}
         <h2>Original Image</h2>
-        <img src="{{ original }}" alt="Original Image">
+        <img src="{{ original }}" alt="Original Image" style="max-width: 100%;">
 
         {% if processed %}
             <h2>Processed Image</h2>
-            <img src="{{ processed }}" alt="Processed Image">
-
-            <p><a href="{{ url_for('download_file', processed_path=processed) }}" download>Download Processed Image</a></p>
+            <img src="{{ processed }}" alt="Processed Image" style="max-width: 100%;">
+            <p><a href="{{ url_for('download_file', processed_path=processed) }}">Download Processed Image</a></p>
         {% endif %}
     {% endif %}
 </body>
